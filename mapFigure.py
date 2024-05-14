@@ -6,9 +6,20 @@ from shapely.geometry import Point
 from random import * 
 
 
+COLORS={
+    "bg_plot": "#f1faee",
+    "line_color": "black",
+    "usable": "#457b9d",
+    "not_usable": "#a8dadc",
+    "selected": "#e63946",
+}
+
 REGIONS = pd.read_parquet("data/russia_regions.parquet")
 region_numbers = dict()
-
+region_allowed_names = ['Республика Бурятия', 'Ленинградская область', 
+         'Камчатский край', 
+         'Свердловская область', 'Республика Татарстан',
+         'Приморский край']
 
 def convert_crs(x_arr, y_arr, to_crs='EPSG:32646', from_crs="EPSG:4326"):
     """Преобразование значений координат в массивах x_arr и y_arr
@@ -36,10 +47,10 @@ class mapFigure(go.Figure):
                                       name=r.region,
                                       text=r.region,
                                       hoverinfo="text",
-                                      line_color='grey',
+                                      line_color=COLORS['line_color'],
                                       fill='toself',
-                                      line_width=1,
-                                      fillcolor='lightblue',
+                                      line_width=0.4,
+                                      fillcolor=COLORS['usable'] if r.region in region_allowed_names else COLORS['not_usable'],
                                       showlegend=False,
             ))
             region_numbers[i] = r.region
@@ -64,6 +75,8 @@ class mapFigure(go.Figure):
 
         # чтобы покрасивее вписывалась карта на поверхности фигуры
         self.update_layout(showlegend=False, 
-                           clickmode='event', dragmode='pan', 
+                           dragmode='pan', 
                            width=1300, height=700, 
-                           margin={'l': 50, 'b': 50, 't': 50, 'r': 50}) # отступы
+                           margin={'l': 0, 'b': 0, 't': 0, 'r': 0},
+                           plot_bgcolor=COLORS['bg_plot'],
+                           paper_bgcolor=COLORS['bg_plot']) 

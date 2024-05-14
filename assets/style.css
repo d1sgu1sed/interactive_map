@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+body{
+    margin: 0;
+    background-color: #f1faee;
+}
+
+.svg-container{
+    border: rgb(126, 126, 126) solid 1.5px;
+    
+}
+
+.js-plotly-plot{
+    margin: 10px;
+}
+
+.upper-part{
+    display: flex;
+}
+
+.grand_img{
+    width: 550px;
+    height: 700px;
+    margin-right: 40px 
+}
+
+.story-output{
+    font-family: "Poetsen One", sans-serif;
+    height: 140px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1.5px solid rgb(126, 126, 126);
+    border-radius: 7px;
+    background-color: rgba(126, 126, 126, 0.192);
+}
