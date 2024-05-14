@@ -7,6 +7,7 @@ from random import *
 
 
 REGIONS = pd.read_parquet("data/russia_regions.parquet")
+region_numbers = dict()
 
 
 def convert_crs(x_arr, y_arr, to_crs='EPSG:32646', from_crs="EPSG:4326"):
@@ -41,10 +42,14 @@ class mapFigure(go.Figure):
                                       fillcolor='lightblue',
                                       showlegend=False,
             ))
+            region_numbers[i] = r.region
+            # print(region_numbers)
         
         # не отображать оси, уравнять масштаб по осям
         self.update_xaxes(visible=False)
         self.update_yaxes(visible=False, scaleanchor="x", scaleratio=1)
+
+        # Если надо отображать города точками
 
         # df = pd.read_parquet("data/cities.parquet")
         # df['x'], df['y'] = convert_crs(df.lon, df.lat) 
