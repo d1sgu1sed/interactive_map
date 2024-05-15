@@ -5,7 +5,7 @@ import json
 
 names = ['Улан-Удэ', 'Санкт-Петербург', 'Петропавловск-Камчатский', 
          'Екатеринбург', 'Казань']
-with open('./data/russian-cities.json') as f:
+with open('/russian-cities.json') as f:
     file = json.load(f)
 
 cities_data = {
