@@ -18,8 +18,7 @@ REGIONS = pd.read_parquet("data/russia_regions.parquet")
 region_numbers = dict()
 region_allowed_names = ['Республика Бурятия', 'Ленинградская область', 
          'Камчатский край', 
-         'Свердловская область', 'Республика Татарстан',
-         'Приморский край']
+         'Свердловская область', 'Республика Татарстан']
 
 def convert_crs(x_arr, y_arr, to_crs='EPSG:32646', from_crs="EPSG:4326"):
     """Преобразование значений координат в массивах x_arr и y_arr
