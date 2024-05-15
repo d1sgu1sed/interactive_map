@@ -36,3 +36,23 @@ body{
     border-radius: 7px;
     background-color: rgba(126, 126, 126, 0.192);
 }
+
+.recipe_btn{
+    height: 70px;
+    width: 120px;
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    background-image: url('https://i.ibb.co/Jx2bVrG/Readtherecipe.png');
+    background-size: 100% 100%; 
+}
+
+.go_back_btn{
+    height: 70px;
+    width: 120px;
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    background-image: url('https://i.ibb.co/7WRcVvJ/Goback.png');
+    background-size: 100% 100%; 
+}

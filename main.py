@@ -1,4 +1,4 @@
-from dash import dash, dcc, html, Input, Output, callback
+from dash import dash, dcc, html, Input, Output, callback, State
 from pages import map_page, recipe_page
         
 app = dash.Dash(__name__)
@@ -13,15 +13,16 @@ app.layout = html.Div([
 
 @callback(
     Output('page-content', 'children'),
-    Input('url', 'pathname')
+    Input('url', 'pathname'),
+    State('saved_data', 'data')
 )
-def display_page(pathname):
-    if pathname == '/recipe_page':
+def display_page(pathname, saved_data):
+    if pathname == '/recipe_page' and saved_data:
         return recipe_page.layout 
     elif pathname == '/':
         return map_page.layout
     else:
-        return pathname
+        return 'Error 404'
 
 if __name__ == "__main__":
     app.run_server(host='0.0.0.0', port=8050)

@@ -1,3 +1,4 @@
+import json
 import pandas as pd
 import geopandas as gpd
 import plotly.graph_objects as go
@@ -16,6 +17,7 @@ COLORS={
 
 REGIONS = pd.read_parquet("data/russia_regions.parquet")
 region_numbers = dict()
+region_english_names = json.load(open('./data/regions.json'))
 region_allowed_names = ['Республика Бурятия', 'Ленинградская область', 
          'Камчатский край', 
          'Свердловская область', 'Республика Татарстан']
@@ -43,8 +45,8 @@ class mapFigure(go.Figure):
         # прорисовка регионов
         for i, r in REGIONS.iterrows():
             self.add_trace(go.Scatter(x=r.x, y=r.y,
-                                      name=r.region,
-                                      text=r.region,
+                                      name=region_english_names[r.region],
+                                      text=region_english_names[r.region],
                                       hoverinfo="text",
                                       line_color=COLORS['line_color'],
                                       fill='toself',

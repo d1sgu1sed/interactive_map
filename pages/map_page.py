@@ -3,7 +3,6 @@ from mapFigure import mapFigure, region_numbers, region_allowed_names, COLORS
 from dash.dependencies import Input, Output, State
 import json
 import random
-from mapFigure import REGIONS
 
 fig = mapFigure()
 
@@ -17,9 +16,23 @@ layout = html.Div([
             html.Img(src='https://i.ibb.co/m0b1fmL/IMG-0116.png',
                     className='grand_img')
         ], className='upper-part'),
-        html.Div([dcc.Link([], id='check_recipe', href="/recipe_page", className='check-recipe')], id='story_output', className='story-output'),
+        html.Div(id='story_output', className='story-output'),
+        dcc.Link(id='check_recipe', href="/recipe_page", className='recipe_btn')
         # html.Div(id='prev_region', style={"font-size":"0px"}),
     ])
+
+
+@callback(
+    Output('check_recipe', 'style'),
+    Output('check_recipe', 'children'),
+    Input('inter_map_graph', 'clickData'),
+    Input('dummy', 'data')
+    )
+def show_btn(click_data, dummy):
+    if click_data is None:
+        return {'visibility': 'hidden'}, ''
+    elif str(click_data['points'][0]['curveNumber']) in replics.keys():
+        return {'visibility': 'visible'}, ''
 
 
 @callback(
@@ -35,9 +48,10 @@ def update_selected_region(dummy, click_data, saved_data):
         if not(saved_data): 
             # Покраска регионов из файла в синий
             for i in replics.keys():
-                print(i)
                 if i.isdigit():
                     fig['data'][int(i)]['fillcolor'] = COLORS['usable']
+                else:
+                    break
             return replics['hello'], fig, saved_data
         else:
             fig['data'][saved_data]['fillcolor'] = COLORS['usable']
@@ -45,11 +59,13 @@ def update_selected_region(dummy, click_data, saved_data):
     
     num = click_data['points'][0]['curveNumber']
     region_name = region_numbers[num]
+    if region_name not in region_allowed_names:
+        exit()
+    fig['data'][num]['fillcolor'] = COLORS['selected']
 
-    if region_name not in region_allowed_names or num == saved_data:
+    if num == saved_data:
         return replics[str(num)], fig, saved_data
     
-    fig['data'][num]['fillcolor'] = COLORS['selected']
 
     if saved_data or saved_data == 0:
         fig['data'][saved_data]['fillcolor'] = COLORS['usable']

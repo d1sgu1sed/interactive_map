@@ -2,8 +2,16 @@ from dash import dcc, html, Input, Output, callback, State
 
 layout = html.Div([
     html.H3('Page 1'),
-    html.Span(id='span-view')
+    html.Span(id='span-view'),
+    dcc.Link(id='go_back', href="/", className='go_back_btn')
 ])
+
+@callback(
+    Output('go_back', 'children'),
+    Input('dummy', 'data')
+    )
+def delete_children(dummy):
+    return ''
 
 @callback(
     Output('span-view', 'children'),
