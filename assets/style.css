@@ -21,7 +21,8 @@ body{
 .grand_img{
     width: 550px;
     height: 700px;
-    margin-right: 40px 
+    margin-right: 40px;
+    margin-top: 22px;
 }
 
 .story-output{
