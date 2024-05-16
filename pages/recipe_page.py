@@ -18,7 +18,7 @@ layout = html.Div([
     Input('dummy', 'data')
     )
 def delete_children(dummy):
-    return ''
+    return '<- go back'
 
 @callback(
     Output('title', 'children'),

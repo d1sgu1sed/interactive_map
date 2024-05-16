@@ -73,11 +73,11 @@ class mapFigure(go.Figure):
         #     marker_color=px.colors.qualitative.G10
         # ))
 
-
         # чтобы покрасивее вписывалась карта на поверхности фигуры
         self.update_layout(showlegend=False, 
                            dragmode='pan', 
-                           width=1300, height=700, 
+                           width=1000, 
+                           height=480,  
                            margin={'l': 0, 'b': 0, 't': 0, 'r': 0},
                            plot_bgcolor=COLORS['bg_plot'],
                            paper_bgcolor=COLORS['bg_plot']) 

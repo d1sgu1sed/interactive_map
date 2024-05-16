@@ -11,28 +11,27 @@ replics = json.load(open('./data/words.json'))
 layout = html.Div([
         html.Div([
             html.Div([
-                dcc.Graph(id="inter_map_graph", figure=fig, className='map-borders'),
+                dcc.Graph(id="inter_map_graph", figure=fig),
             ]),
             html.Img(src='https://i.ibb.co/m0b1fmL/IMG-0116.png',
                     className='grand_img')
         ], className='upper-part'),
         html.Div(id='story_output', className='story-output'),
-        dcc.Link(id='check_recipe', href="/recipe_page", className='recipe_btn')
+        dcc.Link(id='check_recipe', href="/recipe_page", className='recipe_btn', children="read the recipe ->", style={'visibility': 'hidden'})
         # html.Div(id='prev_region', style={"font-size":"0px"}),
     ])
 
 
 @callback(
     Output('check_recipe', 'style'),
-    Output('check_recipe', 'children'),
     Input('inter_map_graph', 'clickData'),
     Input('dummy', 'data')
     )
 def show_btn(click_data, dummy):
-    if click_data is None:
-        return {'visibility': 'hidden'}, ''
+    if click_data is None or str(click_data['points'][0]['curveNumber']) not in replics.keys():
+        return {'visibility': 'hidden'}
     elif str(click_data['points'][0]['curveNumber']) in replics.keys():
-        return {'visibility': 'visible'}, ''
+        return {'visibility': 'visible'}
 
 
 @callback(

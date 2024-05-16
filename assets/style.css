@@ -19,15 +19,14 @@ body{
 }
 
 .grand_img{
-    width: 550px;
-    height: 700px;
-    margin-right: 40px;
-    margin-top: 22px;
+    width: 26%;
+    /* height: 700px; */
+    margin-top: -4%;
 }
 
 .story-output{
     font-family: "Poetsen One", sans-serif;
-    font-size: 20pt;
+    font-size: 18pt;
     height: 140px;
     padding: 10px;
     margin-left: 10px;
@@ -38,21 +37,19 @@ body{
 }
 
 .recipe_btn{
-    height: 70px;
-    width: 120px;
+    font-family: "Poetsen One", sans-serif;
+    color: #457b9d;
+    font-size: 16pt;
     position: fixed;
-    bottom: 15px;
-    right: 20px;
-    background-image: url('https://i.ibb.co/Jx2bVrG/Readtherecipe.png');
-    background-size: 100% 100%; 
+    bottom: 3%;
+    right: 1.5%;
 }
 
 .go_back_btn{
-    height: 70px;
-    width: 120px;
+    font-family: "Poetsen One", sans-serif;
+    color: #457b9d;
+    font-size: 16pt;
     position: fixed;
-    bottom: 15px;
-    right: 20px;
-    background-image: url('https://i.ibb.co/7WRcVvJ/Goback.png');
-    background-size: 100% 100%; 
+    bottom: 3%;
+    right: 1.5%;
 }
