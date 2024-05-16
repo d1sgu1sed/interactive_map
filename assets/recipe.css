@@ -1,40 +1,48 @@
 .container-for-all {
-    font-family: "Poetsen One", sans-serif;
+  font-family: "Poetsen One", sans-serif;
 }
 
 .main-container {
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
   flex-direction: column;
   height: 95vh;
-  /* width: 90%;
-  padding-left: 5%; */
 }
 
 .mini-container {
   display: flex;
-  align-items: center;
   justify-content: space-around;
-  margin: auto;
-  height: 30%;
+  margin-top: 2%;
+  min-height: 55%;
   width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .name {
   display: flex;
   font-size: 20pt;
   align-items: center;
-  align-content: center;
+  /* align-content: center; */
   justify-content: center;
-  margin: auto;
-  height: 10%;
-  width: 90%;
+  margin-top: 2%;
+  /* height: 10%;
+  width: 90%; */
 }
 
 .photo {
+  /* display: flex;
+  align-items: center; */
   /* margin: auto; */
-  height: 50%;
-  width: 30%;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+.photo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 50%;
 }
 
 .ingredients {
@@ -42,57 +50,57 @@
   flex-direction: column;
   align-items: flex-start;
   /* margin: auto; */
-  height: 50%;
-  width: 30%;
+  /* height: 50%;
+  width: 30%; */
 }
 
 .recipe {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  margin: auto;
-  height: 50%;
+  /* display: flex;
+  align-items: center; */
+  /* align-content: center; */
+  /* justify-content: center; */
+  margin: 1.5% auto auto auto;
+  /* height: 50%; */
   width: 90%;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ccc;
-    z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 1000;
 }
 
 .modal-content {
-    width: 300px;
+  width: 300px;
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 label {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 
-.go_back_btn{
+.go_back_btn {
   color: #457b9d;
   font-size: 16pt;
   position: fixed;
@@ -100,7 +108,7 @@ label {
   right: 1.5%;
 }
 
-.shopping-list{
+.shopping-list {
   color: #457b9d;
   font-size: 16pt;
   text-decoration: underline;

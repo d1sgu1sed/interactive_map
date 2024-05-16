@@ -11,7 +11,9 @@ layout = html.Div([
         html.Div(id='name', className='name'),
         html.Div(className='mini-container', children=[
             html.Div(id='ingredients', className='ingredients'),
-            html.Div(id='photo', className='photo')
+            html.Div([
+                html.Div(id='photo', className='photo')
+            ], className='photo-container')
         ]),
         html.Div(id='recipe', className='recipe')
     ]),
@@ -39,10 +41,10 @@ dcc.Link(id='go_back', href="/", className='go_back_btn')
     State('saved_data', 'data')
 )
 def display_value(dummy, saved_data):
-    ingrs = [html.Label(children=[key + ': ' + value
+    ingrs = [html.Label(children=[key + ': ' + value if value else key
                 ]) for key, value in recipes[str(saved_data)]['ingredients'].items()]
     inputs = [html.Label(children=[
-                    dcc.Input(type="checkbox", name="product"), key + ': ' + value
+                    dcc.Input(type="checkbox", name="product"), key + ': ' + value if value else key
                 ]) for key, value in recipes[str(saved_data)]['ingredients'].items()]
     return ('<- go back', 
             recipes[str(saved_data)]['name'], 
