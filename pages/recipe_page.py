@@ -6,27 +6,66 @@ recipes = json.load(open('./data/recipes.json'))
 
 
 layout = html.Div([
-    html.H3(id='title'),
-    html.Span(id='recipe'),
-    html.Span(id='ingredients'),
-    dcc.Link(id='go_back', href="/", className='go_back_btn')
-])
+    # html.Script(),
+    html.Div(className='main-container', children=[
+        html.Div(id='name', className='name'),
+        html.Div(className='mini-container', children=[
+            html.Div(id='ingredients', className='ingredients'),
+            html.Div(id='photo', className='photo')
+        ]),
+        html.Div(id='recipe', className='recipe')
+    ]),
+    html.A("Shopping list", id="openModal", className='shopping-list'),
+    html.Div(id="myModal", className="modal", children=[
+        html.Div(className="modal-content", children=[
+            html.Span("×", id='close', className="close"),
+            html.H2("Need to buy:"),
+            html.Form( id='ingredients_window')
+        ])
+    ]),    
+dcc.Link(id='go_back', href="/", className='go_back_btn')
+], className='container-for-all')
+
 
 
 @callback(
-    Output('go_back', 'children'),
-    Input('dummy', 'data')
-    )
-def delete_children(dummy):
-    return '<- go back'
-
-@callback(
-    Output('title', 'children'),
+    Output('go_back', 'children'), 
+    Output('name', 'children'),
     Output('recipe', 'children'),
     Output('ingredients', 'children'),
-    Input(component_id='dummy', component_property='data'),
-    # Input('url', 'search'))
+    Output('ingredients_window', 'children'),
+    Output('photo', 'style'),
+    Input('dummy', 'data'),
     State('saved_data', 'data')
 )
 def display_value(dummy, saved_data):
-    return recipes[str(saved_data)]['name'], recipes[str(saved_data)]['recipe'], json.dumps(recipes[str(saved_data)]['ingredients'])
+    ingrs = [html.Label(children=[key + ': ' + value
+                ]) for key, value in recipes[str(saved_data)]['ingredients'].items()]
+    inputs = [html.Label(children=[
+                    dcc.Input(type="checkbox", name="product"), key + ': ' + value
+                ]) for key, value in recipes[str(saved_data)]['ingredients'].items()]
+    return ('<- go back', 
+            recipes[str(saved_data)]['name'], 
+            recipes[str(saved_data)]['recipe'], 
+            ingrs,
+            inputs,
+            {'background-image': f"url('./assets/{saved_data}.png')"})
+
+
+@callback(
+    Output("myModal", "style", allow_duplicate=True),
+    Input('openModal', 'n_clicks'),
+    prevent_initial_call=True
+)
+def show_shopping_list(openModal):
+    if openModal:
+        return {'display': 'block'}
+
+
+@callback(
+    Output("myModal", "style"),
+    Input('close', 'n_clicks')
+)
+def show_shopping_list(openModal):
+    if openModal:
+        return {'display': 'none'}

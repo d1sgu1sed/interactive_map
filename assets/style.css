@@ -7,7 +7,6 @@ body{
 
 .svg-container{
     border: rgb(126, 126, 126) solid 1.5px;
-    
 }
 
 .js-plotly-plot{
@@ -45,11 +44,8 @@ body{
     right: 1.5%;
 }
 
-.go_back_btn{
-    font-family: "Poetsen One", sans-serif;
-    color: #457b9d;
-    font-size: 16pt;
-    position: fixed;
-    bottom: 3%;
-    right: 1.5%;
+.error-message{
+    position: absolute;
+    bottom: 50vh;
+    left: 40vw;
 }

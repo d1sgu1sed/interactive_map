@@ -1,5 +1,5 @@
 from dash import dash, dcc, html, Input, Output, callback, State
-from pages import map_page, recipe_page
+from pages import map_page, recipe_page, error_page
         
 app = dash.Dash(__name__)
 
@@ -22,7 +22,7 @@ def display_page(pathname, saved_data):
     elif pathname == '/':
         return map_page.layout
     else:
-        return 'Error 404'
+        return error_page.layout
 
 if __name__ == "__main__":
     app.run_server(host='0.0.0.0', port=8050)
