@@ -1,21 +1,21 @@
-# Установка приложения
-## Для установки приложения, следуйте этим инструкциям:
+# Web-Application Installation
+## To install the web-application, follow these instructions:
 
-* Убедитесь, что у вас установлен Python версии 3.7 или выше.
+* Make sure you have Python 3.7 or higher installed on your system.
 
-* Создайте новую директорию для проекта и перейдите в нее:
+* Create a new directory for your project and navigate to it:
 ```
 mkdir my_app
 cd my_app
 ```
-* Создайте и активируйте виртуальное окружение (опционально):
+* Create and activate a virtual environment (optional):
 ```
 python3 -m venv venv
 source venv/bin/activate
 ```
-* Установите необходимые пакеты с помощью pip:
+* Install the necessary packages using pip:
 ```
 pip install dash pandas geopandas plotly shapely
 ```
-## Теперь вы можете запустить свое приложение, выполнив команду 
+## You can now run your application by executing the command 
 ```python main.py```
